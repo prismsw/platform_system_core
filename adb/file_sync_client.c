@@ -508,6 +508,7 @@ int sync_recv(int fd, const char *rpath, const char *lpath)
         }
 
         total_bytes += len;
+        STATUS();
     }
 
     adb_close(lfd);
