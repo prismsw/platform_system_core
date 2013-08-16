@@ -64,7 +64,11 @@ static void END()
 
 static void STATUS()
 {
-    fprintf(stdout,"%lld bytes\n", total_bytes);
+    // Print updating byte count to stdout
+    // stdout, so stderr is not contaminated by tons of useless lines
+    fprintf(stdout,"%lld bytes", total_bytes);
+    fprintf(stdout, "\r");
+    fflush(stdout);
 }
 
 void sync_quit(int fd)
