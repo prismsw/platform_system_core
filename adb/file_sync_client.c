@@ -62,6 +62,11 @@ static void END()
             total_bytes, (t / 1000000LL), (t % 1000000LL) / 1000LL);
 }
 
+static void STATUS()
+{
+    fprintf(stdout,"%lld bytes\n", total_bytes);
+}
+
 void sync_quit(int fd)
 {
     syncmsg msg;
@@ -238,6 +243,7 @@ static int write_data_file(int fd, const char *path, syncsendbuf *sbuf)
             break;
         }
         total_bytes += ret;
+        STATUS();
     }
 
     adb_close(lfd);
@@ -530,6 +536,7 @@ remote_error:
 
 
 /* --- */
+
 
 
 static void do_sync_ls_cb(unsigned mode, unsigned size, unsigned time,
